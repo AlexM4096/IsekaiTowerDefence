@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace DungeonGeneration
 {
     public interface IDungeonGenerator
     {
-        void GenerateDungeon(DungeonGrid dungeon);
+        Dungeon GenerateDungeon(Vector2Int size);
     }
 }

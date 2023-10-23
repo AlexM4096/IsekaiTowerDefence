@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439ff132246542dbb90244c18e62e358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 32, y: 32}
+  size: {x: 20, y: 32}
   prefab: {fileID: 8420147934690481346, guid: eab63da7df01be244b0ffc395fd3b9d5, type: 3}
 --- !u!4 &1344483894
 Transform:
