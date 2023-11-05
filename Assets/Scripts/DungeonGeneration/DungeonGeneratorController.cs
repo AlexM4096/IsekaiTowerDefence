@@ -21,8 +21,7 @@ namespace DungeonGeneration
 
         public void Generate()
         {
-            _rooms.ForEach(DestroyImmediate);
-            _rooms.Clear();
+            Clear();
 
             _dungeonGenerator = _dungeonGeneratorFactory.Get(algorithm);
             _dungeon = _dungeonGenerator.GenerateDungeon();
@@ -35,6 +34,12 @@ namespace DungeonGeneration
                 go.GetComponent<SpriteRenderer>().size = room.size;
                 _rooms.Add(go);
             }
+        }
+
+        public void Clear()
+        {
+            _rooms.ForEach(DestroyImmediate);
+            _rooms.Clear();
         }
     }
 }

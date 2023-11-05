@@ -19,9 +19,10 @@ namespace Editor.DungeonGeneration
             base.OnInspectorGUI();
 
             if (GUILayout.Button("Generate Dungeon"))
-            {
                 _dungeonGeneratorController.Generate();
-            }
+            
+            if (GUILayout.Button("Clear"))
+                _dungeonGeneratorController.Clear();
         }
     }
 }

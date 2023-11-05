@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88238264456c475c92b6834ab14ece91, type: 3}
   m_Name: New Dungeon Generator Config
   m_EditorClassIdentifier: 
-  size: {x: 32, y: 32}
-  minimalRoomSize: {x: 4, y: 4}
-  roomsAmount: 16
+  <Size>k__BackingField: {x: 64, y: 32}
+  <MinimalRoomSize>k__BackingField: 6
+  <RoomsAmount>k__BackingField: 20
+  <MaximalRatio>k__BackingField: 2
