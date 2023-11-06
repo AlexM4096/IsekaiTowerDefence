@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
-namespace DungeonGeneration
+namespace Dungeon
 {
     public enum DungeonCellType : byte
     {
@@ -11,13 +12,13 @@ namespace DungeonGeneration
         Path
     }
     
-    public class Dungeon : Grid2D<DungeonCellType>
+    public class Dungeon : Array2D<DungeonCellType>
     {
-        public readonly IReadOnlyList<RectInt> Rooms;
+        public readonly IEnumerable<RectInt> Rooms;
 
         public Dungeon(int width, int height, IEnumerable<RectInt> rooms) : base(width, height)
         {
-            Rooms = (IReadOnlyList<RectInt>)rooms;
+            Rooms = rooms;
         }
 
         public Dungeon(Vector2Int size, IEnumerable<RectInt> rooms) : this(size.x, size.y, rooms) {}

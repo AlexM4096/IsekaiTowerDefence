@@ -1,4 +1,4 @@
-namespace DungeonGeneration
+namespace Dungeon.Generation
 {
     public abstract class DungeonGenerator
     {
@@ -10,5 +10,11 @@ namespace DungeonGeneration
         }
         
         public abstract Dungeon GenerateDungeon();
+
+        public bool TryGenerateDungeon(out Dungeon dungeon)
+        {
+            dungeon = GenerateDungeon();
+            return dungeon != null;
+        }
     }
 }

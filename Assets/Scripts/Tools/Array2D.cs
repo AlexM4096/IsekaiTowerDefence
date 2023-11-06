@@ -1,12 +1,12 @@
 using System;
 
-namespace DungeonGeneration
+namespace Tools
 {
-    public class Grid2D<T>
+    public class Array2D<T>
     {
         public readonly int Width;
         public readonly int Height;
-    
+
         private readonly T[] _values;
 
         public T this[int x, int y]
@@ -15,11 +15,11 @@ namespace DungeonGeneration
             set => _values[GetIndex(x, y)] = value;
         }
 
-        public Grid2D(int width, int height)
+        public Array2D(int width, int height)
         {
             if (width <= 0 || height <= 0)
                 throw new Exception();
-            
+
             Width = width;
             Height = height;
 

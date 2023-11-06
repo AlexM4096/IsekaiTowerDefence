@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Dungeon.Generation.Generators;
 
-namespace DungeonGeneration
+namespace Dungeon.Generation
 {
     public enum DungeonGeneratorType : byte
     {
@@ -10,17 +11,24 @@ namespace DungeonGeneration
     
     public class DungeonGeneratorFactory
     {
-        private readonly DungeonGeneratorConfig _config;
-        private readonly Dictionary<DungeonGeneratorType, DungeonGenerator> _generators;
+        private DungeonGeneratorConfig _config;
+        private Dictionary<DungeonGeneratorType, DungeonGenerator> _generators;
+
+        public DungeonGeneratorFactory() {}
         
         public DungeonGeneratorFactory(DungeonGeneratorConfig config)
+        {
+            UpdateConfig(config);
+        }
+        
+        public void UpdateConfig(DungeonGeneratorConfig config)
         {
             _config = config;
 
             _generators = new Dictionary<DungeonGeneratorType, DungeonGenerator>()
             {
                 { DungeonGeneratorType.BSP, new BSPDungeonGenerator(_config) },
-                { DungeonGeneratorType.SmartBSP, new SmartBSPDungeonGeneration(_config) }
+                { DungeonGeneratorType.SmartBSP, new SmartBSPDungeonGenerator(_config) }
             };
         }
 

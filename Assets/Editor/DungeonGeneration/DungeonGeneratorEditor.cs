@@ -1,4 +1,4 @@
-﻿using DungeonGeneration;
+﻿using Dungeon.Generation;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ namespace Editor.DungeonGeneration
             if (GUILayout.Button("Generate Dungeon"))
                 _dungeonGeneratorController.Generate();
             
-            if (GUILayout.Button("Clear"))
+            if (GUILayout.Button("Clear GameObjects"))
                 _dungeonGeneratorController.Clear();
         }
     }

@@ -1,47 +1,59 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Tools.BinaryTree;
 using UnityEngine;
 using Random = UnityEngine.Random;
+// ReSharper disable All
 
-namespace DungeonGeneration
+// ReSharper disable once CheckNamespace
+namespace Dungeon.Generation.Generators
 {
-    public class SmartBSPDungeonGeneration : DungeonGenerator
+    
+    // ReSharper disable once InconsistentNaming
+    public class BSPDungeonGenerator : DungeonGenerator
     {
-        public SmartBSPDungeonGeneration(DungeonGeneratorConfig config) : base(config) {}
-        
+        public BSPDungeonGenerator(DungeonGeneratorConfig config) : base(config) {}
+
         public override Dungeon GenerateDungeon()
         {
             int amount = 1;
             
-            List<RectInt> rooms = new List<RectInt>();
+            BinaryTree<RectInt> binaryTree = new(new RectInt(Vector2Int.zero, Config.Size));
             
-            rooms.Add(new RectInt(Vector2Int.zero, Config.Size));
-
-            while (amount < Config.RoomsAmount)
+            int levels = Mathf.CeilToInt(Mathf.Log(Config.RoomsAmount, 2));
+            for (int i = 0; i < levels; i++)
             {
-                rooms.Sort(delegate(RectInt a, RectInt b)
-                    {
-                        int s = b.width * b.height - a.width * a.height;
-                        return s;
-                    }
-                );
+                foreach (var binaryTreeNode in binaryTree.GetLeaves())
+                {
+                    RectInt room = binaryTreeNode.Value;
+                    
+                    if (room.width < Config.MinimalRoomSize * 2 && room.height < Config.MinimalRoomSize * 2)
+                        continue;
 
-                RectInt room = rooms.
-                    First(t => 
-                        t.width >= 2 * Config.MinimalRoomSize || 
-                        t.height >= 2 * Config.MinimalRoomSize
-                        );
-                rooms.Remove(room);
-                
-                Split(room, out RectInt room1, out RectInt room2);
-                
-                rooms.Add(room1);
-                rooms.Add(room2);
-                amount++;
+                    Split(room, out var room1, out var room2);
+
+                    binaryTreeNode.Right = new BinaryTreeNode<RectInt>(room1);
+                    binaryTreeNode.Left = new BinaryTreeNode<RectInt>(room2);
+
+                    amount++;
+
+                    if (amount >= Config.RoomsAmount)
+                    {
+                        if (Config.ExactRoomsAmount)
+                            break;
+                        else
+                            return null;
+                    }
+                }
             }
 
-            Dungeon dungeon = new Dungeon(Config.Size, rooms);
+            if (amount < Config.RoomsAmount && Config.ExactRoomsAmount)
+                return null;
+   
+
+            IEnumerable<RectInt> rooms = binaryTree.GetLeaves().Select(t => t.Value);
+            Dungeon dungeon = new(Config.Size, rooms);
             return dungeon;
         }
         
