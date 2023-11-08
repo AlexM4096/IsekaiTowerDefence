@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8b844eec00d609943bc44216b1aa133f, type: 2}
-  algorithm: 0
+  algorithm: 1
   prefab: {fileID: 8420147934690481346, guid: eab63da7df01be244b0ffc395fd3b9d5, type: 3}
   roomsHolder: {fileID: 838755334}
 --- !u!1 &573075519

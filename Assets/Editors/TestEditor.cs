@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace Editors
 {
     [CustomEditor(typeof(Test))]
-    public class TestEditor : UnityEditor.Editor
+    public class TestEditor : Editor
     {
         private Test _test;
 

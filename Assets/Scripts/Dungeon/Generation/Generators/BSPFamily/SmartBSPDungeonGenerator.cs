@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Tools.BinaryTree;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 // ReSharper disable once CheckNamespace
 namespace Dungeon.Generation.Generators
@@ -12,46 +10,7 @@ namespace Dungeon.Generation.Generators
     public class SmartBSPDungeonGenerator : BSPDungeonGenerator
     {
         public SmartBSPDungeonGenerator(DungeonGeneratorConfig config) : base(config) {}
-        
-        // public override Dungeon GenerateDungeon()
-        // {
-        //     int amount = 1;
-        //     
-        //     List<RectInt> rooms = new List<RectInt>();
-        //     
-        //     rooms.Add(new RectInt(Vector2Int.zero, Config.Size));
-        //
-        //     while (amount < Config.RoomsAmount)
-        //     {
-        //         rooms.Sort(delegate(RectInt a, RectInt b)
-        //             {
-        //                 int s = b.width * b.height - a.width * a.height;
-        //                 return s;
-        //             }
-        //         );
-        //
-        //         RectInt room = rooms.
-        //             FirstOrDefault(t => 
-        //                 t.width >= 2 * Config.MinimalRoomSize || 
-        //                 t.height >= 2 * Config.MinimalRoomSize
-        //                 );
-        //
-        //         if (Equals(room, default(RectInt)))
-        //             return null;
-        //         
-        //         rooms.Remove(room);
-        //         
-        //         Split(room, out RectInt room1, out RectInt room2);
-        //         
-        //         rooms.Add(room1);
-        //         rooms.Add(room2);
-        //         amount++;
-        //     }
-        //
-        //     Dungeon dungeon = new Dungeon(Config.Size, rooms);
-        //     return dungeon;
-        // }
-        
+
         public override Dungeon GenerateDungeon()
         {
             int amount = 1;

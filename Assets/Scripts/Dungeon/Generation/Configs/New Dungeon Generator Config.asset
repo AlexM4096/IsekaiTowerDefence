@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Dungeon Generator Config
   m_EditorClassIdentifier: 
   <Size>k__BackingField: {x: 64, y: 32}
-  <MinimalRoomSize>k__BackingField: 5
+  <MinimalRoomSize>k__BackingField: 6
   <MaximalRatio>k__BackingField: 2
   <RoomsAmount>k__BackingField: 32
-  <ExactRoomsAmount>k__BackingField: 0
+  <ExactRoomsAmount>k__BackingField: 1

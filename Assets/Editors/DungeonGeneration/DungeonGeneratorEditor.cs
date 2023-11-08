@@ -2,10 +2,10 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.DungeonGeneration
+namespace Editors.DungeonGeneration
 {
     [CustomEditor(typeof(DungeonGeneratorController)), CanEditMultipleObjects]
-    public class DungeonGeneratorEditor : UnityEditor.Editor
+    public class DungeonGeneratorEditor : Editor
     {
         private DungeonGeneratorController _dungeonGeneratorController;
 

@@ -1,4 +1,4 @@
-namespace Dungeon.Generation
+namespace Dungeon.Generation.Generators
 {
     public abstract class DungeonGenerator
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Dungeon.Generation.Generators;
 using UnityEngine;
 
 namespace Dungeon.Generation

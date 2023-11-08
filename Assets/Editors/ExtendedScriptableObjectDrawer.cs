@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace Editors
 {
 	/// <summary>
 	/// Extends how ScriptableObject object references are displayed in the inspector
@@ -20,7 +20,7 @@ namespace Editor
 			}
 			if(property.isExpanded) {
 				var data = property.objectReferenceValue as ScriptableObject;
-				if( data == null ) return EditorGUIUtility.singleLineHeight;
+				if(data == null ) return EditorGUIUtility.singleLineHeight;
 				SerializedObject serializedObject = new SerializedObject(data);
 				SerializedProperty prop = serializedObject.GetIterator();
 				if (prop.NextVisible(true)) {
