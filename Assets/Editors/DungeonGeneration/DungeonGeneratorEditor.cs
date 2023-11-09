@@ -21,8 +21,11 @@ namespace Editors.DungeonGeneration
             if (GUILayout.Button("Generate Dungeon"))
                 _dungeonGeneratorController.Generate();
             
-            if (GUILayout.Button("Clear GameObjects"))
+            if (GUILayout.Button("Clear Dungeon"))
                 _dungeonGeneratorController.Clear();
+            
+            if (GUILayout.Button("Clear GameObjects"))
+                _dungeonGeneratorController.ClearGameObjects();
         }
     }
 }

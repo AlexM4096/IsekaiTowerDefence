@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DungeonSystem.Generation.Generators;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DungeonSystem.Generation
@@ -9,11 +10,10 @@ namespace DungeonSystem.Generation
         [SerializeField] private DungeonGeneratorConfig config;
         [SerializeField] private DungeonGeneratorType algorithm;
         [SerializeField] private GameObject prefab;
-        [SerializeField] private Transform roomsHolder;
         
         public Dungeon Dungeon;
         
-        private readonly List<GameObject> _rooms = new List<GameObject>();
+        private readonly List<GameObject> _roomGameObjects = new List<GameObject>();
         private readonly DungeonGeneratorFactory _dungeonGeneratorFactory = new DungeonGeneratorFactory();
         
         private DungeonGenerator _dungeonGenerator;
@@ -46,20 +46,28 @@ namespace DungeonSystem.Generation
             foreach (var room in Dungeon.Rooms)
             {
                 GameObject go = Instantiate(
-                    prefab, 
-                    new Vector3(room.center.x, room.center.y, 0), 
-                    Quaternion.identity, 
-                    roomsHolder
-                    );
+                    prefab,
+                    new Vector3(room.center.x, room.center.y, 0),
+                    Quaternion.identity,
+                    transform
+                );    
                 go.GetComponent<SpriteRenderer>().size = room.size;
-                _rooms.Add(go);
+                _roomGameObjects.Add(go);
             }
         }
 
         public void Clear()
         {
-            _rooms.ForEach(DestroyImmediate);
-            _rooms.Clear();
+            _roomGameObjects.ForEach(DestroyImmediate);
+            _roomGameObjects.Clear();
+        }
+
+        public void ClearGameObjects()
+        {
+            foreach (Transform tr in transform)
+                _roomGameObjects.Add(tr.gameObject);
+
+            Clear();
         }
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   <MinimalRoomSize>k__BackingField: 6
   <MaximalRatio>k__BackingField: 2
   <RoomsAmount>k__BackingField: 32
-  <ExactRoomsAmount>k__BackingField: 0
+  <ExactRoomsAmount>k__BackingField: 1
