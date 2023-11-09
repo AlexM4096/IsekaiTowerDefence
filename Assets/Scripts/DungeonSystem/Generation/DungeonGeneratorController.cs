@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Dungeon.Generation.Generators;
+using DungeonSystem.Generation.Generators;
 using UnityEngine;
 
-namespace Dungeon.Generation
+namespace DungeonSystem.Generation
 {
     public class DungeonGeneratorController : MonoBehaviour
     {

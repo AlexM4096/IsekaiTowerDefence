@@ -1,5 +1,5 @@
-﻿using Dungeon.Generation.Generators;
-using Dungeon.Generation.Generators.FloorPlan;
+﻿using DungeonSystem.Generation.Generators;
+using DungeonSystem.Generation.Generators.FloorPlan;
 using Tools;
 using UnityEngine;
 

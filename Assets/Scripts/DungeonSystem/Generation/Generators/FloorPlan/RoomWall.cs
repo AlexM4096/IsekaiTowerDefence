@@ -1,7 +1,7 @@
 ﻿using Tools;
 using UnityEngine;
 
-namespace Dungeon.Generation.Generators.FloorPlan
+namespace DungeonSystem.Generation.Generators.FloorPlan
 {
     public class RoomWall
     {

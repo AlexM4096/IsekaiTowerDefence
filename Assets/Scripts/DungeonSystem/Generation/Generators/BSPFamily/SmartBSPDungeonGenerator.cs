@@ -4,7 +4,7 @@ using Tools.BinaryTree;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
-namespace Dungeon.Generation.Generators
+namespace DungeonSystem.Generation.Generators
 {
     // ReSharper disable once InconsistentNaming
     public class SmartBSPDungeonGenerator : BSPDungeonGenerator
@@ -15,7 +15,7 @@ namespace Dungeon.Generation.Generators
         {
             int amount = 1;
             
-            BinaryTree<RectInt> binaryTree = new(new RectInt(Vector2Int.zero, Config.Size));
+            BinaryTree<RectInt> binaryTree = new(new RectInt(Config.Center, Config.Size));
 
             while (amount < Config.RoomsAmount)
             {
@@ -40,17 +40,13 @@ namespace Dungeon.Generation.Generators
                 {
                     if (Config.ExactRoomsAmount)
                         return null;
-                    else
-                        break;
+                    
+                    break;
                 }
 
-                Split(room, out RectInt room1, out RectInt room2);
-
                 BinaryTreeNode<RectInt> binaryTreeNode = dictionary[room];
+                Split(binaryTreeNode);
                 
-                binaryTreeNode.Right = new BinaryTreeNode<RectInt>(room1);
-                binaryTreeNode.Left = new BinaryTreeNode<RectInt>(room2);
-
                 amount++;
             }
 

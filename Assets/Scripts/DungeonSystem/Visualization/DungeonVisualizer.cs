@@ -1,8 +1,8 @@
-﻿using Dungeon.Generation;
+﻿using DungeonSystem.Generation;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Dungeon.Visualization
+namespace DungeonSystem.Visualization
 {
     public class DungeonVisualizer : MonoBehaviour
     {

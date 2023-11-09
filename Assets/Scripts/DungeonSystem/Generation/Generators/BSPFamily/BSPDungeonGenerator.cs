@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 
 // ReSharper disable once CheckNamespace
-namespace Dungeon.Generation.Generators
+namespace DungeonSystem.Generation.Generators
 {
     
     // ReSharper disable once InconsistentNaming
@@ -18,8 +18,9 @@ namespace Dungeon.Generation.Generators
         public override Dungeon GenerateDungeon()
         {
             int amount = 1;
-            
-            BinaryTree<RectInt> binaryTree = new(new RectInt(Vector2Int.zero, Config.Size));
+
+            RectInt dungeonRoom = new RectInt(Config.Center, Config.Size);
+            BinaryTree<RectInt> binaryTree = new BinaryTree<RectInt>(dungeonRoom);
             
             int levels = Mathf.CeilToInt(Mathf.Log(Config.RoomsAmount, 2));
             for (int i = 0; i < levels; i++)
@@ -31,10 +32,7 @@ namespace Dungeon.Generation.Generators
                     if (room.width < Config.MinimalRoomSize * 2 && room.height < Config.MinimalRoomSize * 2)
                         continue;
 
-                    Split(room, out var room1, out var room2);
-
-                    binaryTreeNode.Right = new BinaryTreeNode<RectInt>(room1);
-                    binaryTreeNode.Left = new BinaryTreeNode<RectInt>(room2);
+                    Split(binaryTreeNode);
 
                     amount++;
 
@@ -42,25 +40,27 @@ namespace Dungeon.Generation.Generators
                     {
                         if (Config.ExactRoomsAmount)
                             break;
-                        else
-                            return null;
+                        
+                        return null;
                     }
                 }
             }
 
             if (amount < Config.RoomsAmount && Config.ExactRoomsAmount)
                 return null;
-   
-
+    
+            
             IEnumerable<RectInt> rooms = binaryTree.GetLeaves().Select(t => t.Value);
             Dungeon dungeon = new(Config.Size, rooms);
             return dungeon;
         }
         
-        public void Split(RectInt room, out RectInt room1, out RectInt room2)
+        public void Split(BinaryTreeNode<RectInt> binaryTreeNode)
         {
             bool isSplitHorizontal;
-        
+
+            RectInt room = binaryTreeNode.Value;
+            
             int width = room.width;
             int height = room.height;
             
@@ -74,17 +74,32 @@ namespace Dungeon.Generation.Generators
             if (isSplitHorizontal)
             {
                 height = Random.Range(Config.MinimalRoomSize, height - Config.MinimalRoomSize);
-        
-                room1 = new RectInt(room.position, new Vector2Int(width, height));
-                room2 = new RectInt(room.position + new Vector2Int(0, height), new Vector2Int(width,  room.height - height));
+
+                binaryTreeNode.Right = new BinaryTreeNode<RectInt>(
+                    new RectInt(
+                        room.position + new Vector2Int(0, height),
+                        new Vector2Int(width, room.height - height)
+                    )    
+                );
             }
             else
             {
                 width = Random.Range(Config.MinimalRoomSize, width - Config.MinimalRoomSize);
-        
-                room1 = new RectInt(room.position, new Vector2Int(width, height));
-                room2 = new RectInt(room.position + new Vector2Int(width, 0), new Vector2Int(room.width - width,  height));
+
+                binaryTreeNode.Right = new BinaryTreeNode<RectInt>(
+                    new RectInt(
+                        room.position + new Vector2Int(width, 0),
+                        new Vector2Int(room.width - width, height)
+                    )
+                );
             }
+
+            binaryTreeNode.Left = new BinaryTreeNode<RectInt>(
+                new RectInt(
+                    room.position,
+                    new Vector2Int(width, height)
+                )
+            );
         }
     }
 }

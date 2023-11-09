@@ -1,4 +1,4 @@
-﻿using Dungeon.Generation;
+﻿using DungeonSystem.Generation;
 using UnityEditor;
 using UnityEngine;
 

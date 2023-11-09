@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dungeon.Generation
+namespace DungeonSystem.Generation
 {
     [CreateAssetMenu(menuName = "Create Dungeon Generator Config")]
     public class DungeonGeneratorConfig : ScriptableObject
@@ -10,5 +10,7 @@ namespace Dungeon.Generation
         [field: SerializeField, Range(2, 4)] public float MaximalRatio { get; private set; }
         [field: SerializeField, Range(1, 128)] public int RoomsAmount{ get; private set; }
         [field: SerializeField] public bool ExactRoomsAmount { get; private set; } = true;
+        
+        public Vector2Int Center => - Size / 2;
     }
 }

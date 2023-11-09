@@ -1,5 +1,5 @@
 ﻿// ReSharper disable once CheckNamespace
-namespace Dungeon.Generation.Generators
+namespace DungeonSystem.Generation.Generators
 {
     public class Room 
     {

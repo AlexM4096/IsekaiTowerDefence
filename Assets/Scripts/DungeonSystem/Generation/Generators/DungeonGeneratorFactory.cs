@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Dungeon.Generation.Generators;
+using DungeonSystem.Generation.Generators;
 
-namespace Dungeon.Generation
+namespace DungeonSystem.Generation
 {
     public enum DungeonGeneratorType : byte
     {
@@ -15,11 +15,6 @@ namespace Dungeon.Generation
         private Dictionary<DungeonGeneratorType, DungeonGenerator> _generators;
 
         public DungeonGeneratorFactory() {}
-        
-        public DungeonGeneratorFactory(DungeonGeneratorConfig config)
-        {
-            UpdateConfig(config);
-        }
         
         public void UpdateConfig(DungeonGeneratorConfig config)
         {
