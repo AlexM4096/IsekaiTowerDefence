@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace Editors.DungeonGeneration
 {
-    [CustomEditor(typeof(DungeonGeneratorController)), CanEditMultipleObjects]
-    public class DungeonGeneratorEditor : Editor
+    [CustomEditor(typeof(DungeonController)), CanEditMultipleObjects]
+    public class DungeonControllerEditor : Editor
     {
-        private DungeonGeneratorController _dungeonGeneratorController;
+        private DungeonController _dungeonController;
 
         private void Awake()
         {
-            _dungeonGeneratorController = (DungeonGeneratorController)target;
+            _dungeonController = (DungeonController)target;
         }
 
         public override void OnInspectorGUI()
@@ -19,13 +19,13 @@ namespace Editors.DungeonGeneration
             base.OnInspectorGUI();
 
             if (GUILayout.Button("Generate Dungeon"))
-                _dungeonGeneratorController.Generate();
+                _dungeonController.Generate();
             
             if (GUILayout.Button("Clear Dungeon"))
-                _dungeonGeneratorController.Clear();
+                _dungeonController.Clear();
             
             if (GUILayout.Button("Clear GameObjects"))
-                _dungeonGeneratorController.ClearGameObjects();
+                _dungeonController.ClearGameObjects();
         }
     }
 }

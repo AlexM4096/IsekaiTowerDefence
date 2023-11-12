@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Size>k__BackingField: {x: 64, y: 36}
   <MinimalRoomSize>k__BackingField: 6
-  <MaximalRatio>k__BackingField: 2
   <RoomsAmount>k__BackingField: 32
   <ExactRoomsAmount>k__BackingField: 1

@@ -1,18 +1,19 @@
 ﻿using DungeonSystem.Generation;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace DungeonSystem.Visualization
 {
     public class DungeonVisualizer : MonoBehaviour
     {
-        [SerializeField] private DungeonGeneratorController dungeonGeneratorController; 
+        [FormerlySerializedAs("dungeonGeneratorController")] [SerializeField] private DungeonController dungeonController; 
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private TileBase floorTile;
 
         public void VisualizeDungeon()
         {
-            var dungeon = dungeonGeneratorController.Dungeon;
+            var dungeon = dungeonController.Dungeon;
 
             for (int x = 0; x < dungeon.Width; x++)
             {

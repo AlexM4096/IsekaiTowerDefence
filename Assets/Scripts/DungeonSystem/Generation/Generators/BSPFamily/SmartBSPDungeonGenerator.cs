@@ -15,7 +15,8 @@ namespace DungeonSystem.Generation.Generators
         {
             int amount = 1;
             
-            BinaryTree<RectInt> binaryTree = new(new RectInt(Config.Center, Config.Size));
+            RectInt dungeonRoom = new RectInt(Vector2Int.zero, Config.Size);
+            BinaryTree<RectInt> binaryTree = new BinaryTree<RectInt>(dungeonRoom);
 
             while (amount < Config.RoomsAmount)
             {
@@ -52,6 +53,15 @@ namespace DungeonSystem.Generation.Generators
 
             IEnumerable<RectInt> enumerable = binaryTree.GetLeaves().Select(t => t.Value);
             Dungeon dungeon = new Dungeon(Config.Size, enumerable);
+            
+            foreach (RectInt room in enumerable)
+            {
+                foreach (Vector2Int position in room.allPositionsWithin)
+                {
+                    dungeon[position.x, position.y] = DungeonCellType.Floor;
+                }
+            }
+            
             return dungeon;
         }
     }

@@ -1,11 +1,16 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using DungeonSystem.Generation.Generators;
+using Tools;
+using Tools.DelaunayTriangulation;
 using Unity.VisualScripting;
 using UnityEngine;
+using Edge = Tools.DelaunayTriangulation.Edge;
 
 namespace DungeonSystem.Generation
 {
-    public class DungeonGeneratorController : MonoBehaviour
+    public class DungeonController : MonoBehaviour
     {
         [SerializeField] private DungeonGeneratorConfig config;
         [SerializeField] private DungeonGeneratorType algorithm;
@@ -15,6 +20,8 @@ namespace DungeonSystem.Generation
         
         private readonly List<GameObject> _roomGameObjects = new List<GameObject>();
         private readonly DungeonGeneratorFactory _dungeonGeneratorFactory = new DungeonGeneratorFactory();
+
+        private HashSet<Edge> _edges = new HashSet<Edge>();
         
         private DungeonGenerator _dungeonGenerator;
         
@@ -54,6 +61,9 @@ namespace DungeonSystem.Generation
                 go.GetComponent<SpriteRenderer>().size = room.size;
                 _roomGameObjects.Add(go);
             }
+            
+            List<Point> points = Dungeon.Rooms.Select(t => new Point(t.center)).ToList();
+            // IEnumerable<Triangle> triangles = Triangulator.Triangulate(points);
         }
 
         public void Clear()
@@ -69,5 +79,15 @@ namespace DungeonSystem.Generation
 
             Clear();
         }
+
+        // private void OnDrawGizmos()
+        // {
+        //     if (Dungeon == null) return;
+        //     
+        //     foreach (Edge edge in _edges)
+        //     {
+        //         Gizmos.DrawLine(edge.Start.Value.ToVector3(), edge.End.Value.ToVector3());
+        //     }
+        // }
     }
 }
