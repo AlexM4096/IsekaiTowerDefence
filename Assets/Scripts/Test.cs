@@ -12,9 +12,10 @@ public class Test : MonoBehaviour
             new Point(new Vector2(0, 0)), 
             new Point(new Vector2(0, 10)), 
             new Point(new Vector2(10, 0)),
+            new Point(new Vector2(10, 10)),
         };
 
-        ICollection<Edge> edges = Triangulator.Triangulate(points);
+        ICollection<Triangle> edges = Triangulator.Triangulate(points);
 
         print(edges.Count);
     }

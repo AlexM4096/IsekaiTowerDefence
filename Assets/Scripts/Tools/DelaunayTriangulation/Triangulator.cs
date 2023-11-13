@@ -52,19 +52,11 @@ namespace Tools.DelaunayTriangulation
                     maxY = point.y;
             }
 
-            return new Rect()
-            {
-                xMin = minX,
-                xMax = maxX,
-                yMin = minY,
-                yMax = maxY
-            };
+            return Rect.MinMaxRect(minX, minY, maxX, maxY);
         }
         
-        public static ICollection<Edge> Triangulate(List<Point> points)
+        public static ICollection<Triangle> Triangulate(List<Point> points)
         {
-            HashSet<Edge> edgs = new HashSet<Edge>();
-
             List<Triangle> triangles = new List<Triangle>();
             
             Rect bounds = GetPointBounds(points);
@@ -137,12 +129,7 @@ namespace Tools.DelaunayTriangulation
                 }
             }
 
-            foreach (Triangle triangle in triangles)
-            {
-                edgs.AddRange(triangle.GetEdges());
-            }
-            
-            return edgs;
+            return triangles;
         }
     }
 }
