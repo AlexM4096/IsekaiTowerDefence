@@ -7,9 +7,13 @@ namespace DungeonSystem.Visualization
 {
     public class DungeonVisualizer : MonoBehaviour
     {
-        [FormerlySerializedAs("dungeonGeneratorController")] [SerializeField] private DungeonController dungeonController; 
-        [SerializeField] private Tilemap tilemap;
+        [SerializeField] private DungeonController dungeonController; 
+        
+        [SerializeField] private Tilemap floorTilemap;
         [SerializeField] private TileBase floorTile;
+        
+        [SerializeField] private Tilemap wallTilemap;
+        [SerializeField] private TileBase wallTile;
 
         public void VisualizeDungeon()
         {
@@ -20,11 +24,13 @@ namespace DungeonSystem.Visualization
                 for (int y = 0; y < dungeon.Height; y++)
                 {
                     if (dungeon[x, y] == DungeonCellType.Floor)
-                        tilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+                        floorTilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+                    else if (dungeon[x, y] == DungeonCellType.Wall)
+                        wallTilemap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
             }
         }
 
-        public void ClearTilemap() => tilemap.ClearAllTiles();
+        public void ClearTilemap() => floorTilemap.ClearAllTiles();
     }
 }

@@ -6,9 +6,8 @@ namespace DungeonSystem
 {
     public enum DungeonCellType : byte
     {
-        None,
-        Floor,
         Wall,
+        Floor,
         Path
     }
     
