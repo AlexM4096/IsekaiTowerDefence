@@ -31,6 +31,10 @@ namespace DungeonSystem.Visualization
             }
         }
 
-        public void ClearTilemap() => floorTilemap.ClearAllTiles();
+        public void ClearTilemap()
+        {
+            floorTilemap.ClearAllTiles();
+            wallTilemap.ClearAllTiles();
+        }
     }
 }
