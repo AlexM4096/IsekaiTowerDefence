@@ -10,6 +10,8 @@ namespace Tools.DelaunayTriangulation
         public Point VertexB => Vertices[1];
         public Point VertexC => Vertices[2];
         
+        public Edge[] Edges { get; }
+        
         public Vector2 CircumCentre { get; }
         public float CircumRadius { get; }
 
@@ -23,19 +25,16 @@ namespace Tools.DelaunayTriangulation
 
             CircumCentre = ComputeCircumCentre();
             CircumRadius = ComputeCircumRadius();
-        }
-
-        public Edge[] GetEdges()
-        {
-            return new Edge[]
+            
+            Edges = new Edge[]
             {
-                new Edge(VertexA, VertexB),
-                new Edge(VertexB, VertexC),
-                new Edge(VertexC, VertexA),
+                new(VertexA, VertexB),
+                new(VertexB, VertexC),
+                new(VertexC, VertexA),
             };
         }
-        
-        private bool IsCounterClockwise(Point pointA, Point pointB, Point pointC)
+
+        private static bool IsCounterClockwise(Point pointA, Point pointB, Point pointC)
         {
             float result = (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
             return result > 0;
@@ -64,10 +63,6 @@ namespace Tools.DelaunayTriangulation
             Vector2 sqrB = b * b;
             Vector2 sqrC = c * c;
 
-            // float d = (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) * 2f;
-            // float x = ((sqrA.x + sqrA.y) * (b.y - c.y) + (sqrB.x + sqrB.y) * (c.y - a.y) + (sqrC.x + sqrC.y) * (a.y - b.y)) / d;
-            // float y = ((sqrA.x + sqrA.y) * (c.x - b.x) + (sqrB.x + sqrB.y) * (a.x - c.x) + (sqrC.x + sqrC.y) * (b.x - a.x)) / d;
-            
             float d = (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) * 2f;
             float x = (sqrA.magnitude * (b.y - c.y) + sqrB.magnitude * (c.y - a.y) + sqrC.magnitude * (a.y - b.y)) / d;
             float y = (sqrA.magnitude * (c.x - b.x) + sqrB.magnitude * (a.x - c.x) + sqrC.magnitude * (b.x - a.x)) / d;

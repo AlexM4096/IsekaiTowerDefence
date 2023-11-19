@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Tools.DelaunayTriangulation
@@ -32,27 +31,27 @@ namespace Tools.DelaunayTriangulation
         
         public static Rect GetPointBounds(IEnumerable<Point> points)
         {
-            float minX = Mathf.Infinity;
-            float minY = Mathf.Infinity;
-            float maxX = Mathf.NegativeInfinity;
-            float maxY = Mathf.NegativeInfinity;
+            float xMin = Mathf.Infinity;
+            float yMin = Mathf.Infinity;
+            float xMax = Mathf.NegativeInfinity;
+            float yMax = Mathf.NegativeInfinity;
 
             foreach (Point point in points)
             {
-                if (minX > point.x)
-                    minX = point.x;
+                if (xMin > point.x)
+                    xMin = point.x;
 
-                if (minY > point.y)
-                    minY = point.y;
+                if (yMin > point.y)
+                    yMin = point.y;
                 
-                if (maxX < point.x)
-                    maxX = point.x;
+                if (xMax < point.x)
+                    xMax = point.x;
 
-                if (maxY < point.y)
-                    maxY = point.y;
+                if (yMax < point.y)
+                    yMax = point.y;
             }
 
-            return Rect.MinMaxRect(minX, minY, maxX, maxY);
+            return Rect.MinMaxRect(xMin, yMin, xMax, yMax);
         }
         
         public static ICollection<Triangle> Triangulate(List<Point> points)
@@ -80,18 +79,18 @@ namespace Tools.DelaunayTriangulation
                 }
         
                 //Contruct a polygon from unique edges, i.e. ignoring duplicate edges inclusively
-                List<Edge> polygon = new List<Edge>();
+                HashSet<Edge> polygon = new HashSet<Edge>();
                 for (int i = 0; i < badTriangles.Count; i++)
                 {
                     Triangle triangle = badTriangles[i];
-                    Edge[] edges = triangle.GetEdges();
+                    Edge[] edges = triangle.Edges;
         
-                    for (int j = 0; j < edges.Length; j++)
+                    foreach (var t1 in edges)
                     {
                         bool rejectEdge = false;
                         for (int t = 0; t < badTriangles.Count; t++)
                         {
-                            if (t != i && badTriangles[t].ContainsEdge(edges[j]))
+                            if (t != i && badTriangles[t].ContainsEdge(t1))
                             {
                                 rejectEdge = true;
                             }
@@ -99,7 +98,7 @@ namespace Tools.DelaunayTriangulation
         
                         if (!rejectEdge)
                         {
-                            polygon.Add(edges[j]);
+                            polygon.Add(t1);
                         }
                     }
                 }
@@ -111,23 +110,38 @@ namespace Tools.DelaunayTriangulation
                 
                 foreach (var edge in polygon)
                 {
-                    Point pointA = new Point(new Vector2(point.x, point.y));
-                    Point pointB = new Point(edge.Start.Value);
-                    Point pointC = new Point(edge.End.Value);
+                    Point pointA = point;
+                    Point pointB = edge.Start;
+                    Point pointC = edge.End;
                     
                     triangles.Add(new Triangle(pointA, pointB, pointC));
                 }
             }
-            
-            for (int i = 0; i < triangles.Count; i++)
+
+            for (int i = triangles.Count - 1; i >= 0; i--)
             {
                 Triangle triangle = triangles[i];
-        
-                if (triangle.Vertices.Any(vertex => supraTriangle.Vertices.Any(vertex.Equals)))
+                for (int j = 0; j < triangle.Vertices.Length; j++)
                 {
-                    triangles.RemoveAt(i);
+                    bool removeTriangle = false;
+                    Point vertex = triangle.Vertices[j];
+                    for (int s = 0; s < supraTriangle.Vertices.Length; s++)
+                    {
+                        if (vertex.Equals(supraTriangle.Vertices[s]))
+                        {
+                            removeTriangle = true;
+                            break;
+                        }
+                    }
+
+                    if (removeTriangle)
+                    {
+                        triangles.RemoveAt(i);
+                        break;
+                    }
                 }
             }
+
 
             return triangles;
         }

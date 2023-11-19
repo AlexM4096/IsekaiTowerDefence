@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DungeonSystem.Generation.Generators;
 using Tools;
 using Tools.DelaunayTriangulation;
-using Unity.VisualScripting;
 using UnityEngine;
 using Edge = Tools.DelaunayTriangulation.Edge;
 
@@ -61,9 +59,6 @@ namespace DungeonSystem.Generation
                 go.GetComponent<SpriteRenderer>().size = room.size;
                 _roomGameObjects.Add(go);
             }
-            
-            List<Point> points = Dungeon.Rooms.Select(t => new Point(t.center)).ToList();
-            // IEnumerable<Triangle> triangles = Triangulator.Triangulate(points);
         }
 
         public void Clear()
@@ -80,14 +75,23 @@ namespace DungeonSystem.Generation
             Clear();
         }
 
-        // private void OnDrawGizmos()
-        // {
-        //     if (Dungeon == null) return;
-        //     
-        //     foreach (Edge edge in _edges)
-        //     {
-        //         Gizmos.DrawLine(edge.Start.Value.ToVector3(), edge.End.Value.ToVector3());
-        //     }
-        // }
+        private void OnDrawGizmos()
+        {
+            if (Dungeon == null) return;
+
+            List<Point> points = Dungeon.Rooms.Select(t => new Point(t.center)).ToList();
+            IEnumerable<Triangle> triangles = Triangulator.Triangulate(points);
+            
+            foreach (var triangle in triangles)
+            {
+                Point ver1 = triangle.Vertices[0];
+                Point ver2 = triangle.Vertices[1];
+                Point ver3 = triangle.Vertices[2];
+            
+                Gizmos.DrawLine(ver1.Value.ToVector3(), ver2.Value.ToVector3());
+                Gizmos.DrawLine(ver2.Value.ToVector3(), ver3.Value.ToVector3());
+                Gizmos.DrawLine(ver3.Value.ToVector3(), ver1.Value.ToVector3());
+            }
+        }
     }
 }

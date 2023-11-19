@@ -51,16 +51,7 @@ namespace DungeonSystem.Generation.Generators
                 amount++;
             }
 
-            IEnumerable<RectInt> enumerable = binaryTree.GetLeaves().Select(t => t.Value);
-            Dungeon dungeon = new Dungeon(Config.Size, enumerable);
-            
-            foreach (RectInt room in enumerable)
-            {
-                foreach (Vector2Int position in room.allPositionsWithin)
-                {
-                    dungeon[position.x, position.y] = DungeonCellType.Floor;
-                }
-            }
+            var dungeon = PaintRooms(binaryTree);
             
             return dungeon;
         }

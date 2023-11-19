@@ -50,6 +50,13 @@ namespace DungeonSystem.Generation.Generators
                 return null;
     
             
+            var dungeon = PaintRooms(binaryTree);
+
+            return dungeon;
+        }
+
+        protected Dungeon PaintRooms(BinaryTree<RectInt> binaryTree)
+        {
             IEnumerable<RectInt> rooms = binaryTree.GetLeaves().Select(t => t.Value);
             Dungeon dungeon = new(Config.Size, rooms);
 
@@ -61,11 +68,11 @@ namespace DungeonSystem.Generation.Generators
                     dungeon[position.x, position.y] = DungeonCellType.Floor;
                 }
             }
-            
+
             return dungeon;
         }
-        
-        public void Split(BinaryTreeNode<RectInt> binaryTreeNode)
+
+        protected void Split(BinaryTreeNode<RectInt> binaryTreeNode)
         {
             bool isSplitHorizontal;
 
