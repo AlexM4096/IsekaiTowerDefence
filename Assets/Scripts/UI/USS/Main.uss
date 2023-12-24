@@ -1,0 +1,16 @@
+.unity-text-element {
+    -unity-text-align: lower-center;
+}
+
+.background {
+    flex-grow: 1;
+    background-color: rgb(119, 50, 0);
+}
+
+.text-1 {
+    -unity-font-definition: resource('Fonts/Better VCR SDF');
+}
+
+.text-2 {
+    -unity-font-definition: resource('Fonts/Minecraft Ten SDF');
+}

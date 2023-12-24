@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/USS/Main.uss?fileID=7433441132597879392&amp;guid=d73a5f76a7ff19a4ebce2025dc4a8bd3&amp;type=3#Main" />
+    <ui:VisualElement name="Background" class="background" style="align-items: center; justify-content: center;">
+        <ui:VisualElement name="Logo" style="width: 950px; height: 495px; background-image: url(&apos;project://database/Assets/Sprites/%D1%82%D0%B0%D0%B9%D0%BB%D1%81%D0%B5%D1%82UI_UX.png?fileID=1727003640&amp;guid=fce975c3743bdea47b307913078e83cb&amp;type=3#тайлсетUI_UX_0&apos;);" />
+        <ui:Label tabindex="-1" text="&lt;gradient=&quot;Gradient 1&quot;&gt;[press any button to continue}&lt;/gradient&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="text-1 text" style="font-size: 48px; padding-top: 40px;" />
+    </ui:VisualElement>
+</ui:UXML>

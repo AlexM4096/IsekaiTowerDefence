@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/USS/Main.uss?fileID=7433441132597879392&amp;guid=d73a5f76a7ff19a4ebce2025dc4a8bd3&amp;type=3#Main" />
+    <Style src="project://database/Assets/Scripts/UI/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=cf5023f28689308458dce7eea1aaff79&amp;type=3#MainMenu" />
+    <ui:VisualElement name="Background" class="background" style="flex-grow: 1; padding-top: 88px; padding-right: 88px; padding-bottom: 88px; padding-left: 88px;">
+        <ui:VisualElement name="ButtonGroup" style="flex-grow: 1; width: 781px; justify-content: flex-end;">
+            <ui:Button text="&lt;gradient=&quot;Gradient 1&quot;&gt;новая игра&lt;/gradient&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewGame" class="button text-2" />
+            <ui:Button text="&lt;gradient=&quot;Gradient 1&quot;&gt;продолжить&lt;/gradient&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueGame" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
+            <ui:Button text="&lt;gradient=&quot;Gradient 1&quot;&gt;выбрать уровень&lt;/gradient&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectLevel" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
+            <ui:Button text="&lt;gradient=&quot;Gradient 1&quot;&gt;выйти из игры&lt;/gradient&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitGame" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
