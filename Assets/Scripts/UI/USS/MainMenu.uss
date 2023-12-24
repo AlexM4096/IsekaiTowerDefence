@@ -13,3 +13,34 @@
     font-size: 70px;
     color: rgba(0, 0, 0, 0.5);
 }
+
+.cornerButton {
+    width: 130px;
+    height: 130px;
+    margin-left: 65px;
+    scale: -1 1;
+    transition-timing-function: ease-in-out-bounce;
+    transition-duration: 0.2s;
+}
+
+.cornerButton:hover {
+    height: 124px;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-bounce;
+}
+
+.settingButton {
+    background-image: url('project://database/Assets/Sprites/%D1%82%D0%B0%D0%B9%D0%BB%D1%81%D0%B5%D1%82UI_UX.png?fileID=-1254730779&guid=fce975c3743bdea47b307913078e83cb&type=3#тайлсетUI_UX_17');
+}
+
+.settingButton:hover {
+    background-image: url('project://database/Assets/Sprites/%D1%82%D0%B0%D0%B9%D0%BB%D1%81%D0%B5%D1%82UI_UX.png?fileID=-792119463&guid=fce975c3743bdea47b307913078e83cb&type=3#тайлсетUI_UX_18');
+}
+
+.soundButton {
+    background-image: url('project://database/Assets/Sprites/%D1%82%D0%B0%D0%B9%D0%BB%D1%81%D0%B5%D1%82UI_UX.png?fileID=39385905&guid=fce975c3743bdea47b307913078e83cb&type=3#тайлсетUI_UX_25');
+}
+
+.soundButton:hover {
+    background-image: url('project://database/Assets/Sprites/%D1%82%D0%B0%D0%B9%D0%BB%D1%81%D0%B5%D1%82UI_UX.png?fileID=-992834006&guid=fce975c3743bdea47b307913078e83cb&type=3#тайлсетUI_UX_26');
+}
