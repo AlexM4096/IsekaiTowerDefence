@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/USS/Main.uss?fileID=7433441132597879392&amp;guid=d73a5f76a7ff19a4ebce2025dc4a8bd3&amp;type=3#Main" />
+    <Style src="project://database/Assets/Resources/UI/USS/SoundMenu.uss?fileID=7433441132597879392&amp;guid=58473fc7a6b4676409cf4aebc61f1b11&amp;type=3#SoundMenu" />
+    <ui:VisualElement name="Root" style="flex-grow: 1;">
+        <ui:VisualElement name="Background" class="background" style="border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); justify-content: center; align-items: center; height: 50%; width: 50%; flex-grow: 0; left: 25%; top: 25%;">
+            <ui:Button text="x" name="CloseButton" class="text-2" style="-unity-text-align: middle-center; font-size: 25px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; position: absolute; top: -25px; right: -25px;" />
+            <ui:Slider picking-mode="Ignore" value="42" high-value="100" label="&lt;style=&quot;G1&quot;&gt;музыка&lt;/style&gt;" name="Music" class="text-2 slider" />
+            <ui:Slider picking-mode="Ignore" value="42" high-value="100" label="&lt;style=&quot;G1&quot;&gt;эффекты&lt;/style&gt;" name="Effects" class="slider text-2" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

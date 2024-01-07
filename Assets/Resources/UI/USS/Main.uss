@@ -8,9 +8,9 @@
 }
 
 .text-1 {
-    -unity-font-definition: resource('Fonts/Better VCR SDF');
+    -unity-font-definition: resource('Font Assets/Better VCR SDF');
 }
 
 .text-2 {
-    -unity-font-definition: resource('Fonts/Minecraft Ten SDF');
+    -unity-font-definition: resource('Font Assets/Minecraft Ten SDF');
 }

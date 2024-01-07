@@ -1,16 +1,16 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/Scripts/UI/USS/Main.uss?fileID=7433441132597879392&amp;guid=d73a5f76a7ff19a4ebce2025dc4a8bd3&amp;type=3#Main" />
-    <Style src="project://database/Assets/Scripts/UI/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=cf5023f28689308458dce7eea1aaff79&amp;type=3#MainMenu" />
+    <Style src="project://database/Assets/Resources/UI/USS/Main.uss?fileID=7433441132597879392&amp;guid=d73a5f76a7ff19a4ebce2025dc4a8bd3&amp;type=3#Main" />
+    <Style src="project://database/Assets/Resources/UI/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=cf5023f28689308458dce7eea1aaff79&amp;type=3#MainMenu" />
     <ui:VisualElement name="Background" class="background" style="flex-grow: 1; padding-top: 88px; padding-right: 88px; padding-bottom: 88px; padding-left: 88px; flex-direction: row;">
         <ui:VisualElement name="ButtonGroup" style="justify-content: flex-end;">
-            <ui:Button text="&lt;style=&quot;G1&quot;&gt;/новая_игра fsd&lt;/style&gt;" name="NewGame" enable-rich-text="true" class="button text-2" style="-unity-font-style: normal; flex-wrap: wrap;" />
+            <ui:Button text="&lt;style=&quot;G1&quot;&gt;/новая_игра&lt;/style&gt;" name="NewGame" enable-rich-text="true" class="button text-2" style="flex-wrap: wrap;" />
             <ui:Button text="&lt;style=&quot;G1&quot;&gt;/продолжить&lt;/style&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueGame" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
             <ui:Button text="&lt;style=&quot;G1&quot;&gt;/выбрать_уровень&lt;/style&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectLevel" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
             <ui:Button text="&lt;style=&quot;G1&quot;&gt;/выйти_из_игры&lt;/style&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitGame" enable-rich-text="true" class="button text-2" style="-unity-text-align: lower-left;" />
         </ui:VisualElement>
-        <ui:VisualElement name="SettingGroup" style="flex-grow: 1; flex-shrink: 1; flex-direction: row; align-items: flex-end; justify-content: flex-end;">
-            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="settingButton cornerButton" />
-            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SoundButton" class="cornerButton soundButton" />
+        <ui:VisualElement name="MenuGroup" style="flex-grow: 1; flex-shrink: 1; flex-direction: row; align-items: flex-end; justify-content: flex-end;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsMenu" class="settingButton cornerButton" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SoundMenu" class="cornerButton soundButton" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

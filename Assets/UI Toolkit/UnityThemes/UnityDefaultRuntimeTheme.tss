@@ -1,4 +1,5 @@
 @import url("unity-theme://default");
 
-@import url("/Assets/Scripts/UI/USS/Reset.uss");
+@import url("/Assets/Resources/UI/USS/Reset.uss");
+
 VisualElement {}
